@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<br>
+<form class="form-horizontal container" #fr="ngForm" (ngSubmit)="ModifierProduit()">
+    <fieldset>
+      <legend>Modifier Produit</legend>
+      <div class="form-group">
+      
+        <div class="col-lg-10">
+            <br>
+          <input type="text" class="form-control" id="nom" name="nom" placeholder="nom" [(ngModel)]="produit.nom">
+        </div>
+      </div>
+      <div class="form-group">
+      
+        <div class="col-lg-10">
+            <br>
+          <input type="number" class="form-control" id="prixUnitaire" name="prixUnitaire" placeholder="prixUnitaire" [(ngModel)]="produit.prixUnitaire">
+        </div>
+      </div>
+      <div class="form-group">
+      
+        <div class="col-lg-10">
+            <br>
+          <input type="number" class="form-control" id="quantite" name="prixUnitaire" placeholder="quantite" [(ngModel)]="produit.quantite">
+        </div>
+      </div>
+    </fieldset>
+    <br>
+    <input type="submit" id="contactFormSubmit" value="Modifier Porduit"
+   class="btn btn-primary btn-modern pull-right"
+    data-loading-text="Loading...">
+  </form>
+

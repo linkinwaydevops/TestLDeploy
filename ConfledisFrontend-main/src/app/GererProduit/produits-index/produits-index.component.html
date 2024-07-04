@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+<br>
+
+<input type="text" class="form-control " id="nom" name="nom" placeholder="nom" [(ngModel)]="nom" (keyup)="recherchPub(nom)" style="width: 20%; margin-left: 5%;">
+<br>
+
+<table class="table container">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Prix unitaire</th>
+        <th scope="col">Quantite</th>
+        <th scope="col">Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produit of ListeProduits">
+        <td>{{produit.nom}}</td>
+        <td>{{produit.prixUnitaire}}</td>
+        <td>{{produit.quantite}}</td>
+        <td>
+          <div class="row">
+              <div class="col-3">
+
+                <button class="delete-button btn btn-danger" (click)="SupprimerProduit(produit.id)"> 
+                  <i class="fa fa-trash "></i> Supprimer
+                </button>
+              </div>
+              <div class="col-3">
+
+                <button class="delete-button btn btn-primary"[routerLink]="['/ModifierProduit', produit.id]"> 
+                  <i class="fas fa-edit"></i>Modifier
+                </button>
+              </div>
+              <div class="col-3">
+
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="getProduitById(produit.id)">
+                  <i class="fas fa-edit"></i>Detail
+                </button>
+                
+              </div>
+          </div>
+        </td>
+
+      </tr>
+     
+    
+
+    </tbody>
+  </table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nom du produit : {{prod.nom}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Prix unitaire :  {{prod.prixUnitaire}}
+        <br>
+        Quantite :  {{prod.quantite}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
